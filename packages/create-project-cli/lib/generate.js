@@ -1,9 +1,9 @@
 const chalk = require('chalk')
-// const ejs = require('ejs')
+const ejs = require('ejs')
 const fs = require('fs-extra')
 const path = require('path')
-// const { isBinaryFileSync  } = require('isbinaryfile')
-// const debug = require('debug')('faiz:cli-generate')
+const { isBinaryFileSync  } = require('isbinaryfile')
+const debug = require('debug')('@wuge/create-project-cli')
 const { logWithSpinner, stopSpinner } = require('../util/spinner')
 const writeFileTree = require('../util/writeFileTree')
 const getNpmLatestVersion = require('../util/getNpmLatestVersion')
@@ -22,8 +22,8 @@ const getNpmLatestVersion = require('../util/getNpmLatestVersion')
  * 渲染 ejs 模板
  */
 async function render(source, additionalData = {}, ejsOptions = {}) {
-  const baseDir = path.resolve(__dirname, '../')  // path/node_modules/faiz-cli
-  source = path.resolve(baseDir, source) // path/node_modules/faiz-cli/templates/vue
+  const baseDir = path.resolve(__dirname, '../')  // path/node_modules/@wuge/create-project-cli
+  source = path.resolve(baseDir, source) // path/node_modules/@wuge/create-project-cli/templates/vue
   let files = {}
 
   const globby = require('globby')
@@ -41,7 +41,7 @@ async function render(source, additionalData = {}, ejsOptions = {}) {
       return fileName
     }).join('/')
 
-    const sourcePath = path.resolve(source, rawPath) // path/node_modules/faiz-cli/templates/vue/src/App.vue
+    const sourcePath = path.resolve(source, rawPath) // path/node_modules/f@wuge/create-project-cli/templates/vue/src/App.vue
     const fileContent = renderFile(sourcePath, additionalData, ejsOptions)
     if (Buffer.isBuffer(fileContent) || fileContent.trim()) {
       files[targetPath] = fileContent
@@ -129,17 +129,17 @@ module.exports = async function(appName, dest) {
     'package.json': JSON.stringify(pkg, null, 3),//缩进一个tab键
   })
 
-  // const files = await render('./templates/vue', {
-  //   options: { appName } // ejs data
-  // })
-  // debug('files', Object.keys(files))
-  // await writeFileTree(dest, files)
+  const files = await render('./templates/vue', {
+    options: { appName } // ejs data
+  })
+  debug('files', Object.keys(files))
+  await writeFileTree(dest, files)
 
-  // await pkgInstall(dest)
+  await pkgInstall(dest)
 
 
   stopSpinner()
-  // console.log(`🎉  Successfully created project ${chalk.yellow(appName)}.`)
-  // console.log()
+  console.log(`🎉  Successfully created project ${chalk.yellow(appName)}.`)
+  console.log()
 
 }
