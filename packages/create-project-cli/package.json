@@ -1,0 +1,27 @@
+{
+  "name": "@wuge/create-project-cli",
+  "version": "1.0.0",
+  "description": "项目生成cli",
+  "main": "index.js",
+  "bin": {
+    "wuge-create": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=10.0"
+  },
+  "author": "wuge",
+  "license": "ISC",
+  "devDependencies": {
+    "chalk": "^4.1.0",
+    "commander": "^6.1.0",
+    "fs-extra": "^9.0.1",
+    "inquirer": "^7.3.3",
+    "node-fetch": "^2.6.0",
+    "ora": "^5.0.0",
+    "semver": "^7.3.2",
+    "validate-npm-package-name": "^3.0.0"
+  }
+}
