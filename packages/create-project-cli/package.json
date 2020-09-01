@@ -14,6 +14,9 @@
   },
   "author": "wuge",
   "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "chalk": "^4.1.0",
     "commander": "^6.1.0",
@@ -23,5 +26,6 @@
     "ora": "^5.0.0",
     "semver": "^7.3.2",
     "validate-npm-package-name": "^3.0.0"
-  }
+  },
+  "gitHead": "9d494bcf80939de362de5fac8c6874e33c8669b7"
 }
