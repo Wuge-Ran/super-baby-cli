@@ -3,7 +3,8 @@ const chalk = require('chalk')
 
 const spinner = ora()
 
-let lastMsg = null
+let lastMsg = null;
+
 exports.logWithSpinner = function(symbol, msg) {
   if (!msg) {
     msg = symbol

@@ -3,7 +3,6 @@ const chalk = require('chalk');
 const path = require('path');
 const fs = require('fs-extra');
 const inquirer = require('inquirer');
-
 async function create(appName){
     const cwd = process.cwd();//current working directory
     const targetDir = path.resolve(cwd, appName);

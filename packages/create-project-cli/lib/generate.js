@@ -28,8 +28,8 @@ async function render(source, additionalData = {}, ejsOptions = {}) {
 
   const globby = require('globby')
   const _files = await globby(['**/*'], { cwd: source })
-
-  debug('template files', _files)
+  debugger;
+  debug('template files', __dirname)
 
   for (const rawPath of _files) {
     // 下划线开头的文件转为.   _gitignore -> .gitignore
@@ -74,7 +74,7 @@ async function renderPackageJson(appName) {
   try {
     const npmPkgs = ['vue', 'vue-property-decorator', '@wuge/create-project-cli' ]
     const npmPkgsVersion = await getNpmLatestVersion(npmPkgs)
-    debugger
+    
     // 生成 package.json
     const pkg = {
       name: appName,
@@ -83,8 +83,7 @@ async function renderPackageJson(appName) {
       main: 'src/index.js',
       private: true,
       scripts: {
-        dev: 'faiz serve',
-        test: 'faiz test',
+        dev: 'wuge-create serve',
         build: 'faiz build',
       },
       dependencies: {
@@ -122,24 +121,22 @@ async function pkgInstall(targetDir) {
 module.exports = async function(appName, dest) {
   console.log('before creating......')
 
-  logWithSpinner(`✨`, `Creating project in ${chalk.yellow(dest)}.`)
+  logWithSpinner(chalk.green('✔'), `Creating project in ${chalk.yellow(dest)}.`)
 
   const pkg = await renderPackageJson(appName)
   await writeFileTree(dest, {
     'package.json': JSON.stringify(pkg, null, 3),//缩进一个tab键
   })
 
-  const files = await render('./templates/vue', {
+  const files = await render('./template/vue', {
     options: { appName } // ejs data
   })
   debug('files', Object.keys(files))
   await writeFileTree(dest, files)
 
   await pkgInstall(dest)
-
-
   stopSpinner()
-  console.log(`🎉  Successfully created project ${chalk.yellow(appName)}.`)
-  console.log()
+
+  console.log(`👼  Successfully created project ${chalk.yellow(appName)}.`)
 
 }

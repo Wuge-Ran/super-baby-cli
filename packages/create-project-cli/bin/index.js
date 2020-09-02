@@ -25,12 +25,18 @@ program
 // create
 program
   .command('new <app-name>')
-  .description('create a new project powered by super-baby-cli')
+  .description('create a new project powered by super-baby-cli 👼')
   .action(appName => {
     require('../scripts/create')(appName)
   })
 
-
+// server
+program
+  .command('server')
+  .description('serve your app')
+  .action(appName => {
+    require('../scripts/serve')(appName)
+  })
 
 //parse输出
 program.parse(process.argv)
