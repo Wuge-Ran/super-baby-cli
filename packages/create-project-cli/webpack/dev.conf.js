@@ -1,7 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
 const { merge } = require('webpack-merge')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const baseConfig = require('./base.conf')()

@@ -31,14 +31,16 @@ async function serve() {
   const devServer = createDevServer(webpackConfig)
 
   // Ctrl + C 触发
+  //sigint 程序终止(interrupt)信号, 在用户键入INTR字符(通常是baiCtrl-C)时发出 。
+  //sigterm 程序结束(terminate)信号, 与SIGKILL不同的是该信号可以被阻塞和处理. 通常用来要求程序自己正常退出. shell命令kill缺省产生这个信号。
   ;['SIGINT', 'SIGTERM'].forEach(sig => {
     process.on(sig, () => {
       devServer.close()
       process.exit()
     })
   })
-
-  return devServer.listen('3002', '0.0.0.0', err => {
+  spinner.stop();
+  return devServer.listen('3002', err => {
     if (err) return console.log(err)
   })
 }
