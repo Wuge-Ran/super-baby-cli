@@ -8,7 +8,6 @@ const getWebpackConfig = require('../webpack/dev.conf')
 const spinner = ora('Starting development server...')
 
 function createDevServer (webpackConfig) {
-  console.log('=== webpackConfig ===', webpackConfig)
   const compiler = webpack(webpackConfig)
 
   const DevServer = require('webpack-dev-server')

@@ -83,7 +83,7 @@ async function renderPackageJson(appName) {
       main: 'src/index.js',
       private: true,
       scripts: {
-        dev: 'wuge-create serve',
+        dev: 'wuge-create server',
         build: 'faiz build',
       },
       dependencies: {
