@@ -34,6 +34,10 @@ module.exports = function() {
         chunkFilename: 'static/css/chunk.[id].css'
       }),
     ],
+    output:{
+      filename: 'static/js/[name].min.js',
+      chunkFilename: 'static/js/[name].chunk.min.js',
+    }
   }
 
   return merge(baseConfig, prodConfig)
