@@ -8,7 +8,7 @@ const baseConfig = require('./base.conf')()
 module.exports = function() {
   const devConfig = {
     mode: 'development',
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'cheap-module-source-map',
     module: {
       rules: [
         {
