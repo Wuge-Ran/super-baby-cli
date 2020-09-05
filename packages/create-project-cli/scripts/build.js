@@ -3,7 +3,7 @@ process.env.NODE_ENV = 'production'
 const chalk = require('chalk')
 const webpack = require('webpack')
 
-const getWebpackConfig = require('../webpack/prod')
+const getWebpackConfig = require('../webpack/prod.conf')
 
 async function build() {
   console.log('👼👼start build')

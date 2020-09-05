@@ -84,7 +84,7 @@ async function renderPackageJson(appName) {
       private: true,
       scripts: {
         dev: 'wuge-create server',
-        build: 'faiz build',
+        build: 'wuge-create build',
       },
       dependencies: {
         vue: `^${npmPkgsVersion.vue}`,
