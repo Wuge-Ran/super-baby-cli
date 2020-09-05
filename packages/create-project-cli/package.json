@@ -1,6 +1,6 @@
 {
   "name": "@wuge/create-project-cli",
-  "version": "1.0.7",
+  "version": "1.0.8-alpha.0",
   "description": "项目生成cli",
   "main": "index.js",
   "bin": {
