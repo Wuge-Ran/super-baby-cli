@@ -1,5 +1,5 @@
-.DS_Store
-node_modules
+# dependencies  npm包文件
+/node_modules
 
 
 # local env files
@@ -19,3 +19,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+node_modules
